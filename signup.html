@@ -1,0 +1,80 @@
+<!doctype html><html lang="en"><head>
+<!-- skill:chrome -->
+<style>
+/* Credit line — bottom-right */
+.design-ui-credit {
+  position: fixed;
+  bottom: 12px;
+  right: 12px;
+  font: 11px/1 system-ui, sans-serif;
+  color: rgba(128,128,128,0.5);
+  pointer-events: none;
+  z-index: 2147483647;
+  transition: opacity 0.4s ease;
+  user-select: none;
+  letter-spacing: 0.02em;
+}
+
+/* Hide chrome on touch devices */
+@media (hover: none) {
+  .design-ui-credit { display: none; }
+}
+
+/* Print fixes */
+@media print {
+  * {
+    transition: none !important;
+    animation: none !important;
+    box-shadow: none !important;
+  }
+  body {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .design-ui-credit { display: none !important; }
+}
+
+</style>
+<script>
+(function () {
+    // Design-ui pages are single compositions, so the whole body is editable.
+    function markEditable() {
+        document.body.classList.add('artifact-editable');
+    }
+
+    // Credit badge with idle-fade. Hover devices only.
+    function initChromeUI() {
+        if (!matchMedia('(hover: hover)').matches) return;
+
+        var credit = document.createElement('div');
+        credit.className = 'design-ui-credit';
+        credit.setAttribute('aria-hidden', 'true');
+        credit.innerHTML = '\u{1F49C} by ClickUp Brain';
+        document.body.appendChild(credit);
+
+        var timer = null;
+        var fade = function (out) { credit.style.opacity = out ? '0' : ''; };
+        fade(true);
+        var show = function () {
+            fade(false);
+            clearTimeout(timer);
+            timer = setTimeout(function () { fade(true); }, 3000);
+        };
+        document.addEventListener('mousemove', show);
+        show();
+    }
+
+    function init() {
+        markEditable();
+        initChromeUI();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
+
+</script>
+<!-- /skill:chrome --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Create account | Loop</title><style>:root{--bg:oklch(97% .012 300);--surface:oklch(99% .006 300);--ink:oklch(25% .035 300);--muted:oklch(52% .025 300);--line:oklch(89% .018 300);--violet:oklch(52% .20 300);--violet2:oklch(44% .18 300);--lime:oklch(84% .18 128);--danger:oklch(58% .18 25)}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:16px}.shell{min-height:100vh;display:grid;grid-template-columns:.92fr 1.08fr}.brand-side{background:oklch(32% .09 300);color:oklch(98% .008 300);padding:48px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}.brand-side:after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:var(--violet);left:-180px;bottom:-190px;opacity:.7}.logo{display:flex;align-items:center;gap:10px;font-size:1.35rem;font-weight:800;position:relative;z-index:1}.logo-mark{width:36px;height:36px;border-radius:11px;background:var(--lime);display:grid;place-items:center;color:var(--violet2)}.pitch{position:relative;z-index:1}.pitch h1{font-size:clamp(2.3rem,4.5vw,4.2rem);line-height:1;letter-spacing:-.05em;margin:0 0 24px;text-wrap:balance}.pitch p{font-size:1.06rem;line-height:1.65;color:oklch(88% .025 300);max-width:47ch}.rules{position:relative;z-index:1;display:grid;gap:12px;color:oklch(88% .025 300);font-size:.9rem}.rule{display:flex;gap:9px;align-items:center}.auth-side{display:grid;place-items:center;padding:40px 32px}.panel{width:min(100%,470px)}.panel h2{font-size:2rem;line-height:1.1;letter-spacing:-.035em;margin:0 0 8px}.sub{color:var(--muted);margin:0 0 28px}.field{display:grid;gap:8px;margin-bottom:16px}label{font-weight:650;font-size:.9rem}input{width:100%;min-height:48px;border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:12px 14px;font:inherit;color:var(--ink)}input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid oklch(72% .14 300 / .45);outline-offset:2px}.btn{width:100%;min-height:48px;border:0;border-radius:12px;font:700 1rem Inter,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:transform .15s cubic-bezier(.25,1,.5,1),background .2s}.btn:hover{transform:translateY(-1px)}.primary{background:var(--violet);color:oklch(99% .005 300)}.primary:hover{background:var(--violet2)}.google{background:var(--surface);border:1px solid var(--line);color:var(--ink)}.divider{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:.8rem;margin:18px 0}.divider:before,.divider:after{content:"";height:1px;background:var(--line);flex:1}.msg{display:none;border-radius:11px;padding:11px 13px;margin-bottom:16px;font-size:.9rem}.msg.show{display:block}.msg.error{background:oklch(94% .045 25);color:oklch(45% .14 25)}.check{display:flex;align-items:flex-start;gap:10px;color:var(--muted);font-size:.84rem;margin:18px 0 22px}.check input{width:18px;min-height:18px;margin-top:2px;accent-color:var(--violet)}.check a,.foot a{color:var(--violet2);font-weight:700;text-decoration:none}.foot{text-align:center;color:var(--muted);margin-top:20px;font-size:.92rem}.spinner{width:18px;height:18px;border:2px solid oklch(95% .02 300 / .45);border-top-color:oklch(99% .005 300);border-radius:50%;animation:spin .7s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}@media(max-width:820px){.shell{grid-template-columns:1fr}.brand-side{display:none}.auth-side{padding:48px 22px}}</style></head><body><main class="shell"><section class="brand-side"><div class="logo"><span class="logo-mark"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m17 2 4 4-4 4"/><path d="M3 11V9a3 3 0 0 1 3-3h15"/><path d="m7 22-4-4 4-4"/><path d="M21 13v2a3 3 0 0 1-3 3H3"/></svg></span>Loop</div><div class="pitch"><h1>Grow with people, not tricks.</h1><p>Find creators in your niche, subscribe only when you genuinely enjoy their work, and prove every exchange.</p></div><div class="rules"><div class="rule"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg> No forced subscriptions</div><div class="rule"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg> Screenshot proof from both creators</div><div class="rule"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg> Reputation penalties for dishonest behavior</div></div></section><section class="auth-side"><div class="panel"><h2>Create your account</h2><p class="sub">Your first match is a few details away.</p><div id="message" class="msg" role="alert"></div><form id="signupForm"><div class="field"><label for="name">Display name</label><input id="name" autocomplete="name" required maxlength="40" placeholder="Rohit"></div><div class="field"><label for="email">Email</label><input id="email" type="email" autocomplete="email" required placeholder="you@example.com"></div><div class="field"><label for="password">Password</label><input id="password" type="password" autocomplete="new-password" required minlength="6" placeholder="At least 6 characters"></div><div class="check"><input id="agree" type="checkbox" required><label for="agree">I agree to subscribe only when I genuinely like a channel and to provide honest proof.</label></div><button id="signupBtn" class="btn primary" type="submit">Create account</button></form><div class="divider">or</div><button id="googleBtn" class="btn google" type="button"><svg width="19" height="19" viewBox="0 0 24 24"><path fill="#4285F4" d="M21.6 12.23c0-.71-.06-1.4-.18-2.07H12v3.92h5.38a4.6 4.6 0 0 1-2 3.02v2.54h3.24c1.9-1.75 2.98-4.33 2.98-7.41Z"/><path fill="#34A853" d="M12 22c2.7 0 4.98-.9 6.63-2.43l-3.24-2.54c-.9.6-2.05.96-3.39.96-2.61 0-4.82-1.76-5.61-4.13H3.04v2.62A10 10 0 0 0 12 22Z"/><path fill="#FBBC05" d="M6.39 13.86A6 6 0 0 1 6.08 12c0-.65.11-1.28.31-1.86V7.52H3.04A10 10 0 0 0 2 12c0 1.61.39 3.14 1.04 4.48l3.35-2.62Z"/><path fill="#EA4335" d="M12 6.01c1.47 0 2.79.5 3.82 1.5l2.87-2.87A9.62 9.62 0 0 0 12 2a10 10 0 0 0-8.96 5.52l3.35 2.62C7.18 7.77 9.39 6.01 12 6.01Z"/></svg>Continue with Google</button><p class="foot">Already have an account? <a href="login.html">Log in</a></p></div></section></main><script type="module">import{initializeApp}from"https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";import{getAuth,createUserWithEmailAndPassword,updateProfile,GoogleAuthProvider,signInWithPopup}from"https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";import{getFirestore,doc,setDoc,getDoc,serverTimestamp}from"https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";const firebaseConfig={apiKey:"AIzaSyCwlU3ggrF5Fr4qfE-jsJNntODBudhXo84",authDomain:"loop-edc67.firebaseapp.com",projectId:"loop-edc67",storageBucket:"loop-edc67.firebasestorage.app",messagingSenderId:"607638644613",appId:"1:607638644613:web:06f8c288f798629ec686ec"};const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app),form=document.querySelector('#signupForm'),msg=document.querySelector('#message'),btn=document.querySelector('#signupBtn');function show(text){msg.textContent=text;msg.className='msg show error'}function busy(on){btn.disabled=on;btn.innerHTML=on?'<span class="spinner"></span> Creating account':'Create account'}async function seed(user,displayName){const ref=doc(db,'users',user.uid),snap=await getDoc(ref);if(!snap.exists())await setDoc(ref,{uid:user.uid,email:user.email,displayName:displayName||user.displayName||'Creator',photoURL:user.photoURL||'',reputation:50,status:'standard',warnings:0,completedLoops:0,onboardingComplete:false,createdAt:serverTimestamp(),updatedAt:serverTimestamp()})}form.addEventListener('submit',async e=>{e.preventDefault();busy(true);try{const c=await createUserWithEmailAndPassword(auth,email.value.trim(),password.value);await updateProfile(c.user,{displayName:name.value.trim()});await seed(c.user,name.value.trim());location.href='onboarding.html'}catch(e){const map={'auth/email-already-in-use':'That email already has an account.','auth/weak-password':'Use at least 6 characters.','auth/invalid-email':'Enter a valid email.'};show(map[e.code]||'Could not create the account. Try again.');busy(false)}});googleBtn.addEventListener('click',async()=>{try{const c=await signInWithPopup(auth,new GoogleAuthProvider());await seed(c.user,c.user.displayName);location.href='onboarding.html'}catch(e){if(e.code!=='auth/popup-closed-by-user')show('Google sign-up failed. Try again.')}});</script></body></html>

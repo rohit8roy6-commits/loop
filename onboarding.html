@@ -1,0 +1,80 @@
+<!doctype html><html lang="en"><head>
+<!-- skill:chrome -->
+<style>
+/* Credit line — bottom-right */
+.design-ui-credit {
+  position: fixed;
+  bottom: 12px;
+  right: 12px;
+  font: 11px/1 system-ui, sans-serif;
+  color: rgba(128,128,128,0.5);
+  pointer-events: none;
+  z-index: 2147483647;
+  transition: opacity 0.4s ease;
+  user-select: none;
+  letter-spacing: 0.02em;
+}
+
+/* Hide chrome on touch devices */
+@media (hover: none) {
+  .design-ui-credit { display: none; }
+}
+
+/* Print fixes */
+@media print {
+  * {
+    transition: none !important;
+    animation: none !important;
+    box-shadow: none !important;
+  }
+  body {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .design-ui-credit { display: none !important; }
+}
+
+</style>
+<script>
+(function () {
+    // Design-ui pages are single compositions, so the whole body is editable.
+    function markEditable() {
+        document.body.classList.add('artifact-editable');
+    }
+
+    // Credit badge with idle-fade. Hover devices only.
+    function initChromeUI() {
+        if (!matchMedia('(hover: hover)').matches) return;
+
+        var credit = document.createElement('div');
+        credit.className = 'design-ui-credit';
+        credit.setAttribute('aria-hidden', 'true');
+        credit.innerHTML = '\u{1F49C} by ClickUp Brain';
+        document.body.appendChild(credit);
+
+        var timer = null;
+        var fade = function (out) { credit.style.opacity = out ? '0' : ''; };
+        fade(true);
+        var show = function () {
+            fade(false);
+            clearTimeout(timer);
+            timer = setTimeout(function () { fade(true); }, 3000);
+        };
+        document.addEventListener('mousemove', show);
+        show();
+    }
+
+    function init() {
+        markEditable();
+        initChromeUI();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
+
+</script>
+<!-- /skill:chrome --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Set up your channel | Loop</title><style>:root{--bg:oklch(97% .012 300);--surface:oklch(99% .006 300);--ink:oklch(24% .035 300);--muted:oklch(52% .025 300);--line:oklch(88% .018 300);--violet:oklch(52% .20 300);--violet2:oklch(43% .18 300);--lime:oklch(84% .18 128);--bad:oklch(57% .18 25)}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.top{height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(22px,5vw,72px);border-bottom:1px solid var(--line);background:var(--surface)}.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.25rem}.mark{width:34px;height:34px;border-radius:10px;background:var(--violet);color:var(--lime);display:grid;place-items:center}.secure{display:flex;gap:8px;align-items:center;color:var(--muted);font-size:.84rem}.layout{width:min(1120px,calc(100% - 40px));margin:56px auto 80px;display:grid;grid-template-columns:270px 1fr;gap:64px}.aside h1{font-size:2rem;line-height:1.08;letter-spacing:-.04em;margin:0 0 14px}.aside>p{color:var(--muted);margin:0 0 32px}.steps{display:grid;gap:18px}.step{display:grid;grid-template-columns:38px 1fr;gap:12px;align-items:center;color:var(--muted)}.num{width:38px;height:38px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;font-weight:750;background:var(--surface)}.step.active{color:var(--ink)}.step.active .num{background:var(--violet);color:oklch(99% .005 300);border-color:var(--violet)}.step.done .num{background:var(--lime);color:var(--violet2);border-color:var(--lime)}.step b{display:block;font-size:.9rem}.step span{font-size:.77rem}.panel{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:clamp(24px,5vw,48px);box-shadow:0 18px 45px oklch(30% .05 300 / .07)}.page{display:none}.page.active{display:block}.page h2{font-size:1.65rem;line-height:1.15;letter-spacing:-.035em;margin:0 0 8px}.intro{color:var(--muted);margin:0 0 30px;max-width:60ch}.field{display:grid;gap:8px;margin-bottom:20px}label{font-size:.9rem;font-weight:700}input,select,textarea{width:100%;min-height:48px;border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:oklch(98% .008 300);color:var(--ink);font:inherit}textarea{min-height:112px;resize:vertical}input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible{outline:3px solid oklch(72% .14 300 / .42);outline-offset:2px}.hint{font-size:.8rem;color:var(--muted)}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}.actions{display:flex;justify-content:space-between;align-items:center;margin-top:32px;gap:14px}.btn{min-height:46px;border:0;border-radius:11px;padding:0 20px;font-weight:750;font-size:.94rem;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px}.primary{background:var(--violet);color:oklch(99% .005 300)}.primary:hover{background:var(--violet2)}.ghost{background:transparent;color:var(--muted)}.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.cat input{position:absolute;opacity:0}.cat label{min-height:72px;border:1px solid var(--line);border-radius:13px;padding:13px;display:flex;gap:10px;align-items:center;cursor:pointer;background:var(--surface)}.cat input:checked+label{border-color:var(--violet);background:oklch(95% .03 300);color:var(--violet2)}.cat svg{flex:0 0 auto}.agreement{display:grid;gap:14px}.agree{display:flex;gap:12px;padding:15px;border:1px solid var(--line);border-radius:13px}.agree input{width:19px;min-height:19px;margin-top:2px;accent-color:var(--violet)}.agree strong{display:block}.agree small{color:var(--muted)}.msg{display:none;padding:12px 14px;border-radius:11px;background:oklch(94% .045 25);color:oklch(44% .14 25);margin-bottom:18px}.msg.show{display:block}.loading{min-height:70vh;display:grid;place-items:center;color:var(--muted)}@media(max-width:800px){.layout{grid-template-columns:1fr;margin-top:30px;gap:28px}.aside>p{margin-bottom:20px}.steps{grid-template-columns:repeat(3,1fr);gap:8px}.step{grid-template-columns:1fr;text-align:center}.num{margin:auto}.step span{display:none}.grid2,.categories{grid-template-columns:1fr}.secure{display:none}}</style></head><body><header class="top"><div class="brand"><span class="mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="m17 2 4 4-4 4"/><path d="M3 11V9a3 3 0 0 1 3-3h15"/><path d="m7 22-4-4 4-4"/><path d="M21 13v2a3 3 0 0 1-3 3H3"/></svg></span>Loop</div><div class="secure"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="12" x="4" y="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Your channel details stay public only where expected</div></header><main id="loading" class="loading">Checking your account...</main><main id="app" class="layout" hidden><aside class="aside"><h1>Set up your creator profile</h1><p>This powers matching and gives other creators enough context to choose honestly.</p><div class="steps"><div class="step active" data-step="1"><div class="num">1</div><div><b>Channel</b><span>Identity and link</span></div></div><div class="step" data-step="2"><div class="num">2</div><div><b>Category</b><span>Improve match quality</span></div></div><div class="step" data-step="3"><div class="num">3</div><div><b>Agreement</b><span>Keep Loop trustworthy</span></div></div></div></aside><section class="panel"><div id="message" class="msg"></div><form id="form"><div class="page active" data-page="1"><h2>Your YouTube channel</h2><p class="intro">Add the channel you want other creators to discover.</p><div class="field"><label for="channelName">Channel name</label><input id="channelName" required maxlength="80" placeholder="RohitBuilds"></div><div class="field"><label for="channelUrl">Channel URL</label><input id="channelUrl" type="url" required placeholder="https://www.youtube.com/@yourhandle"><span class="hint">Use the public channel or handle URL, never a Studio link.</span></div><div class="grid2"><div class="field"><label for="subscriberRange">Subscriber range</label><select id="subscriberRange" required><option value="">Select range</option><option>0-99</option><option>100-499</option><option>500-999</option><option>1K-4.9K</option><option>5K-24.9K</option><option>25K+</option></select></div><div class="field"><label for="language">Main language</label><select id="language" required><option value="">Select language</option><option>English</option><option>Hindi</option><option>Hinglish</option><option>Bengali</option><option>Tamil</option><option>Telugu</option><option>Other</option></select></div></div><div class="actions"><span></span><button class="btn primary next" type="button">Continue <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></button></div></div><div class="page" data-page="2"><h2>What do you create?</h2><p class="intro">Choose one main category. Category matches should produce better long-term engagement.</p><div class="categories"><div class="cat"><input id="tech" name="category" type="radio" value="Tech" required><label for="tech"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9zM9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg>Tech</label></div><div class="cat"><input id="gaming" name="category" type="radio" value="Gaming"><label for="gaming"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 11h4M8 9v4M15 12h.01M18 10h.01"/><path d="M17.3 5H6.7C3.6 5 2 7.3 2 10.4V15c0 2.2 2.7 3.3 4.2 1.7L8 15h8l1.8 1.7C19.3 18.3 22 17.2 22 15v-4.6C22 7.3 20.4 5 17.3 5Z"/></svg>Gaming</label></div><div class="cat"><input id="education" name="category" type="radio" value="Education"><label for="education"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 10 9-5 9 5-9 5z"/><path d="M7 12v5c3 2 7 2 10 0v-5"/></svg>Education</label></div><div class="cat"><input id="entertainment" name="category" type="radio" value="Entertainment"><label for="entertainment"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m10 9 5 3-5 3z"/></svg>Entertainment</label></div><div class="cat"><input id="music" name="category" type="radio" value="Music"><label for="music"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>Music</label></div><div class="cat"><input id="lifestyle" name="category" type="radio" value="Lifestyle"><label for="lifestyle"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22a7 7 0 0 0 7-7c0-5-7-13-7-13S5 10 5 15a7 7 0 0 0 7 7Z"/></svg>Lifestyle</label></div></div><div class="field" style="margin-top:24px"><label for="bio">Short channel description</label><textarea id="bio" required maxlength="240" placeholder="What viewers can expect from your channel..."></textarea><span class="hint"><span id="count">0</span>/240 characters</span></div><div class="actions"><button class="btn ghost back" type="button">Back</button><button class="btn primary next" type="button">Continue <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></button></div></div><div class="page" data-page="3"><h2>Keep every loop honest</h2><p class="intro">These rules protect you too. Breaking them lowers reputation and can block matching.</p><div class="agreement"><label class="agree"><input id="genuine" type="checkbox" required><span><strong>Genuine interest only</strong><small>I will subscribe only when I honestly want to follow the channel.</small></span></label><label class="agree"><input id="proof" type="checkbox" required><span><strong>Real screenshot proof</strong><small>I will upload my own current proof and never alter or reuse it.</small></span></label><label class="agree"><input id="fair" type="checkbox" required><span><strong>Fair confirmations and reports</strong><small>I will confirm valid trades and report only genuine issues.</small></span></label></div><div class="actions"><button class="btn ghost back" type="button">Back</button><button id="finish" class="btn primary" type="submit"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m20 6-11 11-5-5"/></svg>Finish setup</button></div></div></form></section></main><script type="module">import{initializeApp}from"https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";import{getAuth,onAuthStateChanged}from"https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";import{getFirestore,doc,getDoc,setDoc,serverTimestamp}from"https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";const cfg={apiKey:"AIzaSyCwlU3ggrF5Fr4qfE-jsJNntODBudhXo84",authDomain:"loop-edc67.firebaseapp.com",projectId:"loop-edc67",storageBucket:"loop-edc67.firebasestorage.app",messagingSenderId:"607638644613",appId:"1:607638644613:web:06f8c288f798629ec686ec"};const app=initializeApp(cfg),auth=getAuth(app),db=getFirestore(app);let user,step=1;const pages=[...document.querySelectorAll('.page')],steps=[...document.querySelectorAll('.step')],msg=document.querySelector('#message');onAuthStateChanged(auth,async u=>{if(!u)return location.href='login.html';user=u;const s=await getDoc(doc(db,'users',u.uid));if(s.exists()&&s.data().onboardingComplete)return location.href='dashboard.html';loading.hidden=true;document.querySelector('#app').hidden=false});function go(n){step=n;pages.forEach(p=>p.classList.toggle('active',+p.dataset.page===n));steps.forEach(s=>{const k=+s.dataset.step;s.classList.toggle('active',k===n);s.classList.toggle('done',k<n);if(k<n)s.querySelector('.num').innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m20 6-11 11-5-5"/></svg>';else s.querySelector('.num').textContent=k});scrollTo({top:0,behavior:'smooth'})}function valid(n){const controls=[...document.querySelector(`[data-page="${n}"]`).querySelectorAll('input,select,textarea')];for(const el of controls)if(!el.checkValidity()){el.reportValidity();return false}return true}document.querySelectorAll('.next').forEach(b=>b.onclick=()=>{if(valid(step))go(step+1)});document.querySelectorAll('.back').forEach(b=>b.onclick=()=>go(step-1));bio.oninput=()=>count.textContent=bio.value.length;form.onsubmit=async e=>{e.preventDefault();if(!valid(3))return;finish.disabled=true;finish.textContent='Saving...';try{const category=document.querySelector('[name=category]:checked').value;await setDoc(doc(db,'users',user.uid),{uid:user.uid,email:user.email,displayName:user.displayName||channelName.value.trim(),channelName:channelName.value.trim(),channelUrl:channelUrl.value.trim(),subscriberRange:subscriberRange.value,language:language.value,category,bio:bio.value.trim(),reputation:50,status:'standard',warnings:0,completedLoops:0,onboardingComplete:true,acceptsRules:true,updatedAt:serverTimestamp()}, {merge:true});location.href='dashboard.html'}catch(err){msg.textContent='Could not save your profile. Check your connection and try again.';msg.classList.add('show');finish.disabled=false;finish.textContent='Finish setup'}};</script></body></html>
