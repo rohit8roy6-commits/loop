@@ -1,0 +1,80 @@
+<!doctype html><html lang="en"><head>
+<!-- skill:chrome -->
+<style>
+/* Credit line — bottom-right */
+.design-ui-credit {
+  position: fixed;
+  bottom: 12px;
+  right: 12px;
+  font: 11px/1 system-ui, sans-serif;
+  color: rgba(128,128,128,0.5);
+  pointer-events: none;
+  z-index: 2147483647;
+  transition: opacity 0.4s ease;
+  user-select: none;
+  letter-spacing: 0.02em;
+}
+
+/* Hide chrome on touch devices */
+@media (hover: none) {
+  .design-ui-credit { display: none; }
+}
+
+/* Print fixes */
+@media print {
+  * {
+    transition: none !important;
+    animation: none !important;
+    box-shadow: none !important;
+  }
+  body {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .design-ui-credit { display: none !important; }
+}
+
+</style>
+<script>
+(function () {
+    // Design-ui pages are single compositions, so the whole body is editable.
+    function markEditable() {
+        document.body.classList.add('artifact-editable');
+    }
+
+    // Credit badge with idle-fade. Hover devices only.
+    function initChromeUI() {
+        if (!matchMedia('(hover: hover)').matches) return;
+
+        var credit = document.createElement('div');
+        credit.className = 'design-ui-credit';
+        credit.setAttribute('aria-hidden', 'true');
+        credit.innerHTML = '\u{1F49C} by ClickUp Brain';
+        document.body.appendChild(credit);
+
+        var timer = null;
+        var fade = function (out) { credit.style.opacity = out ? '0' : ''; };
+        fade(true);
+        var show = function () {
+            fade(false);
+            clearTimeout(timer);
+            timer = setTimeout(function () { fade(true); }, 3000);
+        };
+        document.addEventListener('mousemove', show);
+        show();
+    }
+
+    function init() {
+        markEditable();
+        initChromeUI();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
+
+</script>
+<!-- /skill:chrome --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>My loops | Loop</title><style>:root{--bg:oklch(97% .012 300);--surface:oklch(99% .006 300);--ink:oklch(24% .035 300);--muted:oklch(52% .025 300);--line:oklch(88% .018 300);--violet:oklch(52% .20 300);--deep:oklch(29% .07 300);--soft:oklch(94% .035 300);--lime:oklch(84% .18 128);--lime-soft:oklch(95% .06 128)}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{text-decoration:none;color:inherit}.shell{min-height:100vh;display:grid;grid-template-columns:240px 1fr}.side{background:var(--deep);color:oklch(90% .02 300);padding:24px 18px;display:flex;flex-direction:column;height:100vh;position:sticky;top:0}.brand{display:flex;align-items:center;gap:10px;color:oklch(99% .005 300);font-weight:850;font-size:1.25rem;padding:0 10px 28px}.mark{width:34px;height:34px;border-radius:10px;background:var(--lime);color:var(--deep);display:grid;place-items:center}.nav{display:grid;gap:5px}.nav a{min-height:44px;border-radius:10px;padding:0 12px;display:flex;align-items:center;gap:11px;font-weight:650;font-size:.9rem}.nav a:hover,.nav a.active{background:oklch(38% .08 300);color:oklch(99% .005 300)}.main{min-width:0}.top{height:72px;background:var(--surface);border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 clamp(22px,4vw,56px)}.top h1{font-size:1.15rem;margin:0}.content{padding:clamp(28px,4vw,56px);max-width:1120px;margin:auto}.intro{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:32px}.intro h2{font-size:clamp(2rem,4vw,3.2rem);line-height:1;letter-spacing:-.05em;margin:0 0 11px}.intro p{margin:0;color:var(--muted)}.btn{min-height:45px;border:0;border-radius:11px;padding:0 18px;font-weight:750;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--violet);color:oklch(99% .005 300)}.tabs{display:flex;gap:5px;border-bottom:1px solid var(--line);margin-bottom:18px}.tab{border:0;background:transparent;padding:12px 14px;color:var(--muted);font-weight:750;cursor:pointer;border-bottom:2px solid transparent}.tab.active{color:var(--violet);border-bottom-color:var(--violet)}.list{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden}.row{display:grid;grid-template-columns:48px minmax(0,1fr) 150px 100px;gap:14px;align-items:center;padding:17px 20px;border-bottom:1px solid var(--line)}.row:last-child{border-bottom:0}.avatar{width:46px;height:46px;border-radius:13px;background:var(--soft);color:var(--violet);display:grid;place-items:center;font-weight:850}.who b{display:block}.who small{color:var(--muted)}.state{font-size:.77rem;font-weight:800;border-radius:999px;padding:6px 10px;width:max-content;background:var(--soft);color:var(--violet)}.state.complete{background:var(--lime-soft);color:oklch(40% .12 128)}.open{color:var(--violet);font-size:.86rem;font-weight:800;text-align:right}.empty{text-align:center;padding:60px 22px}.empty svg{color:var(--violet);margin-bottom:12px}.empty h3{margin:0 0 7px}.empty p{color:var(--muted);margin:0 0 20px}.loading{min-height:100vh;display:grid;place-items:center;color:var(--muted)}.mobilebar{display:none}@media(max-width:860px){.shell{grid-template-columns:1fr}.side{display:none}.mobilebar{display:flex;position:fixed;bottom:0;left:0;right:0;height:66px;background:var(--surface);border-top:1px solid var(--line);z-index:20;justify-content:space-around;align-items:center}.mobilebar a{display:grid;place-items:center;color:var(--muted);font-size:.68rem;gap:3px}.mobilebar a.active{color:var(--violet)}.content{padding-bottom:90px}}@media(max-width:630px){.intro{align-items:flex-start;flex-direction:column}.row{grid-template-columns:44px 1fr auto}.row .state{grid-column:2}.open{grid-column:3;grid-row:1/3}.top{padding:0 18px}}</style></head><body><div id="loading" class="loading">Loading your loops...</div><div id="app" class="shell" hidden><aside class="side"><div class="brand"><span class="mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="m17 2 4 4-4 4"/><path d="M3 11V9a3 3 0 0 1 3-3h15"/><path d="m7 22-4-4 4-4"/><path d="M21 13v2a3 3 0 0 1-3 3H3"/></svg></span>Loop</div><nav class="nav"><a href="dashboard.html">Dashboard</a><a href="match.html">Find a match</a><a class="active" href="trades.html">My loops</a><a href="profile.html">Profile</a></nav></aside><main class="main"><header class="top"><h1>My loops</h1></header><div class="content"><div class="intro"><div><h2>Your creator exchanges</h2><p>Open rooms, proof progress, and completed history in one place.</p></div><a class="btn" href="match.html">Find a match</a></div><div class="tabs"><button class="tab active" data-filter="all">All</button><button class="tab" data-filter="active">Active</button><button class="tab" data-filter="complete">Completed</button></div><div id="list" class="list"></div></div></main><nav class="mobilebar"><a href="dashboard.html">Home</a><a href="match.html">Match</a><a class="active" href="trades.html">Loops</a><a href="profile.html">Profile</a></nav></div><script type="module">import{initializeApp}from'https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js';import{getAuth,onAuthStateChanged}from'https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js';import{getFirestore,collection,query,where,getDocs}from'https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js';const cfg={apiKey:'AIzaSyCwlU3ggrF5Fr4qfE-jsJNntODBudhXo84',authDomain:'loop-edc67.firebaseapp.com',projectId:'loop-edc67',storageBucket:'loop-edc67.firebasestorage.app',messagingSenderId:'607638644613',appId:'1:607638644613:web:06f8c288f798629ec686ec'},app=initializeApp(cfg),auth=getAuth(app),db=getFirestore(app);let user,items=[];const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));onAuthStateChanged(auth,async u=>{if(!u)return location.href='login.html';user=u;try{const s=await getDocs(query(collection(db,'matches'),where('participantIds','array-contains',u.uid)));items=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.createdAt?.seconds||0)-(a.createdAt?.seconds||0));render('all')}catch(e){list.innerHTML='<div class="empty"><h3>Could not load loops</h3><p>Check the published Firestore rules and try again.</p></div>'}loading.hidden=true;app.hidden=false});function render(filter){const rows=items.filter(x=>filter==='all'||(filter==='complete'?x.status==='completed':x.status!=='completed'));list.innerHTML=rows.length?rows.map(x=>{const other=x.creatorAId===user.uid?x.creatorBName:x.creatorAName,complete=x.status==='completed';return `<a class="row" href="trade-room.html?id=${encodeURIComponent(x.id)}"><span class="avatar">${esc(other||'C').charAt(0)}</span><span class="who"><b>${esc(other||'Creator')}</b><small>${esc(x.category||'Creator')} · Loop ${esc(x.id.slice(0,6).toUpperCase())}</small></span><span class="state ${complete?'complete':''}">${complete?'Completed':'Proof exchange'}</span><span class="open">Open room</span></a>`}).join(''):'<div class="empty"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m17 2 4 4-4 4M3 11V9a3 3 0 0 1 3-3h15"/></svg><h3>No loops in this view</h3><p>Find a creator and send your first request.</p><a class="btn" href="match.html">Find a match</a></div>'}document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');render(b.dataset.filter)});</script></body></html>
